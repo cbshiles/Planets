@@ -7,4 +7,9 @@ struct Planet {
     float perihelion, aphelion;
     float period; //Orbital period, time for this planet to rotate sun
     float eccentricity, tilt;
+
+    Planet(const char* n, Color* c): name(std::string(n)), color(c)
+    {
+
+    }
 };
