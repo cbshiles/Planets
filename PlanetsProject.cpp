@@ -22,7 +22,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+<<<<<<< HEAD
 #include <iostream>
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 #include "getbmp.h"
 
 //mouse coordinates
@@ -44,6 +47,7 @@ static unsigned int externalTextures[1];
 
 void loadBackgroundTexture()
 {
+<<<<<<< HEAD
 		// Local storage for bmp image data.
 		BitMapFile *image[1];
 
@@ -58,14 +62,17 @@ void loadBackgroundTexture()
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 }
 
 void drawScene(void)
 {
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
     gluLookAt(
+<<<<<<< HEAD
     my_x,
     my_y,
     my_z,
@@ -141,6 +148,8 @@ void drawScene(void)
 
 
     glColor3f(1, 1, 1);
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
     glTranslatef(0, 0, -20);
     glutSolidSphere(5, 50, 50);
 
@@ -150,6 +159,7 @@ void drawScene(void)
 // Initialization routine.
 void setup(void)
 {
+<<<<<<< HEAD
 		glClearColor(1.0, 1.0, 1.0, 0.0);
 		glEnable(GL_DEPTH_TEST);
     glEnable(GL_POLYGON_OFFSET_FILL);
@@ -168,7 +178,12 @@ void setup(void)
 
 		// Turn on OpenGL texturing.
 		glEnable(GL_TEXTURE_2D);
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 
+    // Turn on OpenGL texturing.
+    glEnable(GL_TEXTURE_2D);
+    printf("c\n");
 }
 
 // OpenGL window reshape routine.
@@ -179,15 +194,16 @@ void resize(int w, int h)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(50, aspect, 0.1, 250);
-		width=w;
-		height=h;
-		glMatrixMode(GL_MODELVIEW);
+    width=w;
+    height=h;
+    glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
 
 // Keyboard input processing routine.
 void keyInput(unsigned char key, int x, int y)
 {
+<<<<<<< HEAD
    switch(key)
    {
 		case 27:                  // escape
@@ -227,11 +243,14 @@ void keyInput(unsigned char key, int x, int y)
 			break;
    }
 
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
     if (my_angle > 360.0) my_angle -= 360;
     if (my_angle < 0) my_angle += 360;
 
     if (my_x>180)
     {
+<<<<<<< HEAD
 				my_x=180;
 		}
 
@@ -241,6 +260,8 @@ void keyInput(unsigned char key, int x, int y)
 
 		if (my_z>180) {
 				my_z=180;
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
     }
 
     glutPostRedisplay();
@@ -249,12 +270,13 @@ void keyInput(unsigned char key, int x, int y)
 //used to constantly update the global mouse variables with the position of the mouse
 void trackMouse (int x, int y)
 {
-	last_mouse_x=x;
-	last_mouse_y=height-y;
+    last_mouse_x=x;
+    last_mouse_y=height-y;
 }
 
 //moves the camera depending on the location of the mouse
 void mouseMotion()
+<<<<<<< HEAD
 {
 	//left right
 	if (last_mouse_x<20) my_angle+=0.5;
@@ -266,14 +288,17 @@ void mouseMotion()
 	//up down
 	if (last_mouse_y>20) my_angle_y+=0.5;
 	if (last_mouse_y<480) my_angle_y-=0.5;
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 
-	if (my_angle_y >= 180.0) my_angle_y = 180;
+    if (my_angle_y >= 180.0) my_angle_y = 180;
     if (my_angle_y < 75) my_angle_y = 75;
 
-   glutPostRedisplay();
+    glutPostRedisplay();
 }
 
 // Main routine.
+<<<<<<< HEAD
 int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
@@ -286,11 +311,13 @@ int main(int argc, char **argv)
 	glutKeyboardFunc(keyInput);
 	glutPassiveMotionFunc(trackMouse);
 	glutIdleFunc(mouseMotion);
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 
-	glewExperimental = GL_TRUE;
-	glewInit();
-
+<<<<<<< HEAD
 	setup();
 
 	glutMainLoop();
+=======
+>>>>>>> 94e86edc29a051ab71bfd81caba6bad22acce4df
 }
