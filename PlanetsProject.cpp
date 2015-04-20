@@ -221,7 +221,9 @@ void keyInput(unsigned char key, int x, int y)
             if(my_x < 100 && my_x > -100){
                 my_x -= sin((M_PI/180.0)*my_angle);
             }
-			if(my_z < 0.1)
+			if(my_z < 0.1) {
+                my_z += sin((M_PI/180.0)*my_angle);
+			}
 			break;
    }
 
@@ -255,15 +257,15 @@ void trackMouse (int x, int y)
 void mouseMotion()
 {
 	//left right
-	if (last_mouse_x<20) my_angle+=0.1;
-	if (last_mouse_x>480) my_angle-=0.1;
+	if (last_mouse_x<20) my_angle+=0.5;
+	if (last_mouse_x>480) my_angle-=0.5;
 
 	if (my_angle > 360.0) my_angle -= 360;
     if (my_angle < 0) my_angle += 360;
 
 	//up down
-	if (last_mouse_y>20) my_angle_y+=0.1;
-	if (last_mouse_y<480) my_angle_y-=0.1;
+	if (last_mouse_y>20) my_angle_y+=0.5;
+	if (last_mouse_y<480) my_angle_y-=0.5;
 
 	if (my_angle_y >= 180.0) my_angle_y = 180;
     if (my_angle_y < 75) my_angle_y = 75;
