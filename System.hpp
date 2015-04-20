@@ -40,14 +40,16 @@ struct System{ //Solar system
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	double sm = .15;
+	double sm = 1;//.15;
 
 	width = w;
 	height = h;
 
 //glOrtho
 
-	glFrustum(-maxpr*GLD*sm, maxar*GLD*sm, -maxbr*GLD*sm, maxbr*GLD*sm, fz, fz+sun.radius);
+	//glFrustum(-maxpr*sm, maxar*sm, -maxbr*sm, maxbr*sm, fz+sun.radius-10, fz+sun.radius);
+	glFrustum(-maxpr*sm, maxar*sm, -maxbr*sm, maxbr*sm, fz, fz+sun.radius);
+//glFrustum(-maxpr*GLD*sm, maxar*GLD*sm, -maxbr*GLD*sm, maxbr*GLD*sm, fz, fz+sun.radius);
 //	printf("Sun radius %lf - Mercury aphelion %lf \n", sun.radius, planets[0].aphelion);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -118,7 +120,7 @@ struct System{ //Solar system
 
 	glTranslatef(0, 0, -fz-sun.radius+1);
 
-	glScalef(1.0,1.0,1.0/SFAT);
+	//glScalef(1.0,1.0,1.0/SFAT);
 	// Map the background texture onto a rectangle parallel to the xy-plane.
     
 	glEnable(GL_TEXTURE_2D);
