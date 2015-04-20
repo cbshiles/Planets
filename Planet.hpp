@@ -79,9 +79,6 @@ struct Planet {
 		       4*asw*ay/zu,
 			  4*asw*asw/zu - 1, (nx+1)/2);
 	ty = ny*b*sqrt(1- tx*tx/(a*a));
-//	printf("dat %d\n",(nx+1)/2);
-	double str = 10000;
-//	printf("subz %lf %lf \n", tx-bx,ty-by);
 
 	if(abs(tx-bx)+abs(ty-by) < 1){
 	    cout << name << endl;
@@ -90,20 +87,6 @@ struct Planet {
 
 	}
 
-//	if (by < 0 && ny == 1) ny *= -1;
-
-//	if (by > 0 && ny == -1) ny *= -1;
-
-	// if (nx == 1){
-	//     if (bx-tx < 0) {nx *= -1; return;}
-	// }
-// 	if (tx-bx) < str && abs(ty-by) < str){
-// 	    printf("(%lf, %lf) (%lf, %lf)\n",bx,by,tx,ty);
-
-// 	    nx *= -1;
-// 	    return;
-// //	    if (
-// 	}
 	bx = ax; by=ay;
 	ax = tx; ay = ty;
 
