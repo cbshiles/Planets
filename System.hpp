@@ -26,7 +26,8 @@ struct System{ //Solar system
 	    if (pl->period > maxpd) maxpd = pl->period;
 	    pl++;
 	}
-	pt = maxpd/144000.0;
+	pt = maxpd/144000.0; //144000 ticks is 2 hours
+	printf("MAXPD: %lf PT: %lf",maxpd,pt);
 	pl = &planets[0];
 	for (i=0; i<PLANETS; i++){
 	    pl->calc2(pt);
@@ -40,17 +41,18 @@ struct System{ //Solar system
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	double sm = 1;//.15;
+	double sm = 5.05;
 
 	width = w;
 	height = h;
 
-//glOrtho
+/*
+The bounds are -maxpr to maxar; -maxbr to maxbr (all-ways times GLD)
+sm is our zooom variable, tells us how deep in we are
+ */
 
-	//glFrustum(-maxpr*sm, maxar*sm, -maxbr*sm, maxbr*sm, fz+sun.radius-10, fz+sun.radius);
-	glFrustum(-maxpr*sm, maxar*sm, -maxbr*sm, maxbr*sm, fz, fz+sun.radius);
-//glFrustum(-maxpr*GLD*sm, maxar*GLD*sm, -maxbr*GLD*sm, maxbr*GLD*sm, fz, fz+sun.radius);
-//	printf("Sun radius %lf - Mercury aphelion %lf \n", sun.radius, planets[0].aphelion);
+	glFrustum(-maxpr*GLD*sm, maxar*GLD*sm, -maxbr*GLD*sm, maxbr*GLD*sm, fz, fz+sun.radius);
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
@@ -107,12 +109,6 @@ struct System{ //Solar system
 
 	glLoadIdentity();
 
-	// position the light
-	//   glLightfv(GL_LIGHT0, GL_POSITION, lightPos);  
-//    glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, spotAngle);
-//    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spotDirection);    
-	//  glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, spotExponent);
-
 	glClearDepth(1.0);
 
 	glEnable(GL_DEPTH_TEST);
@@ -121,11 +117,9 @@ struct System{ //Solar system
 	glTranslatef(0, 0, -fz-sun.radius+1);
 
 	//glScalef(1.0,1.0,1.0/SFAT);
-	// Map the background texture onto a rectangle parallel to the xy-plane.
     
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, externalTextures[0]);        
-//    orange->set();
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.0, 0.0); 
 	glVertex3f(-maxpr, -maxbr, 0); 

@@ -7,7 +7,11 @@ using namespace std;
 
 #define PI 3.14159265
 
-void fatSphere(double r){glutSolidSphere(r,50,50);}
+void fatSphere(double r,int sun){
+    double fct = sun ? SFAT : PFAT;
+    glScalef(1,1,1.0/fct);
+    glutSolidSphere(r*fct,50,50);
+}
 
 double quadratic(double a, double b, double c, int choice){
     double z = b*b - 4*a*c;
@@ -27,7 +31,7 @@ struct Sun {
 
     void draw(){
 	color->set();
-	fatSphere(radius*SFAT);
+	fatSphere(radius,1);
     }
 };
 
@@ -71,7 +75,7 @@ struct Planet {
 	color->set();
 	glPushMatrix();
 	glTranslatef(ax,ay,0);
-	fatSphere(radius*PFAT);
+	fatSphere(radius,0);
 	glPopMatrix();
 
 	double tx, ty, zu = ax*ax*b*b;

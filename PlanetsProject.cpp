@@ -25,6 +25,8 @@
 #include <iostream>
 #include "getbmp.h"
 
+double rads = M_PI/180.0;
+
 //mouse coordinates
 double last_mouse_x;
 double last_mouse_y;
@@ -41,6 +43,7 @@ static float my_angle_y=91;
 
 static unsigned int externalTextures[1];
 
+double sz = 124;
 
 void loadBackgroundTexture()
 {
@@ -70,101 +73,100 @@ void drawScene(void)
         my_y,
         my_z,
 
-        my_x - 5*sin((M_PI/180.0) * my_angle),
-        my_y - 5*cos((M_PI/180.0) * my_angle_y),
-        my_z - 5*cos((M_PI/180.0) * my_angle),
+        my_x - 5*sin((rads) * my_angle),
+        my_y - 5*cos((rads) * my_angle_y),
+        my_z - 5*cos((rads) * my_angle),
 
         0,
         1,
         0);
 
-    //glColor3f(1, 1, 1);
+
+    // Turn on OpenGL texturing.
+    glEnable(GL_TEXTURE_2D);
+
     //create a box around the current viewpoint
     //front
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(-124.0, -124.0, 124.0);
+    glVertex3f(-sz, -sz, sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(124.0, -124.0, 124.0);
+    glVertex3f(sz, -sz, sz);
     glTexCoord2f(1, 1);
-    glVertex3f(124.0, 124.0, 124.0);
+    glVertex3f(sz, sz, sz);
     glTexCoord2f(0.0, 1);
-    glVertex3f(-124.0, 124.0, 124.0);
+    glVertex3f(-sz, sz, sz);
     glEnd();
 
-    //glColor3f(0, 1, 0);
     //bottom
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(-124.0, -124.0, 124.0);
+    glVertex3f(-sz, -sz, sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(124.0, -124.0, 124.0);
+    glVertex3f(sz, -sz, sz);
     glTexCoord2f(1, 1);
-    glVertex3f(124.0, -124.0, -124.0);
+    glVertex3f(sz, -sz, -sz);
     glTexCoord2f(0.0, 1);
-    glVertex3f(-124.0, -124.0, -124.0);
+    glVertex3f(-sz, -sz, -sz);
     glEnd();
 
-    //glColor3f(0, 0, 1);
     //top
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(-124.0, 124.0, 124.0);
+    glVertex3f(-sz, sz, sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(124.0, 124.0, 124.0);
+    glVertex3f(sz, sz, sz);
     glTexCoord2f(1, 1);
-    glVertex3f(124.0, 124.0, -124.0);
+    glVertex3f(sz, sz, -sz);
     glTexCoord2f(0.0, 1);
-    glVertex3f(-124.0, 124.0, -124.0);
+    glVertex3f(-sz, sz, -sz);
     glEnd();
 
-    //glColor3f(1, 1, 0); //purple
     //left
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(-124.0, -124.0, 124.0);
+    glVertex3f(-sz, -sz, sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(-124.0, 124.0, 124.0);
+    glVertex3f(-sz, sz, sz);
     glTexCoord2f(1, 1);
-    glVertex3f(-124.0, 124.0, -124.0);;
+    glVertex3f(-sz, sz, -sz);;
     glTexCoord2f(0.0, 1);
-    glVertex3f(-124.0, -124.0, -124.0);
+    glVertex3f(-sz, -sz, -sz);
     glEnd();
 
-    //glColor3f(1, 0, 1); //yellow
     //right
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(124.0, 124.0, 124.0);
+    glVertex3f(sz, sz, sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(124.0, -124.0, 124.0);
+    glVertex3f(sz, -sz, sz);
     glTexCoord2f(1, 1);
-    glVertex3f(124.0, -124.0, -124.0);;
+    glVertex3f(sz, -sz, -sz);;
     glTexCoord2f(0.0, 1);
-    glVertex3f(124.0, 124.0, -124.0);
+    glVertex3f(sz, sz, -sz);
     glEnd();
 
-    //glColor3f(0, 1, 1); //cyan
     //back
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
-    glVertex3f(-124.0, -124.0, -124.0);
+    glVertex3f(-sz, -sz, -sz);
     glTexCoord2f(1, 0.0);
-    glVertex3f(124.0, -124.0, -124.0);
+    glVertex3f(sz, -sz, -sz);
     glTexCoord2f(1, 1);
-    glVertex3f(124.0, 124.0, -124.0);
+    glVertex3f(sz, sz, -sz);
     glTexCoord2f(0.0, 1);
-    glVertex3f(-124.0, 124.0, -124.0);
+    glVertex3f(-sz, sz, -sz);
     glEnd();
 
+    glDisable(GL_TEXTURE_2D);
 
-    glColor3f(1, 1, 1);
+    glColor3f(1, 0, 1);
     glTranslatef(0, 0, -20);
     glutSolidSphere(5, 50, 50);
 
@@ -189,13 +191,6 @@ void setup(void)
 
     // Specify how texture values combine with current surface color values.
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-    // Turn on OpenGL texturing.
-    glEnable(GL_TEXTURE_2D);
-
-    // Turn on OpenGL texturing.
-    glEnable(GL_TEXTURE_2D);
-    printf("c\n");
 }
 
 // OpenGL window reshape routine.
@@ -205,11 +200,17 @@ void resize(int w, int h)
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(50, aspect, 0.1, 250);
+    gluPerspective(50, aspect, 0.1, 2*sz*1.414);//250);
     width=w;
     height=h;
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+}
+
+void setPos(double ang){
+    ang += my_angle;
+    my_x += sin(rads*ang);
+    my_z += cos(rads*ang);
 }
 
 // Keyboard input processing routine.
@@ -217,44 +218,36 @@ void keyInput(unsigned char key, int x, int y)
 {
     switch(key)
     {
-    case 27:                  // escape
-        exit(0);
-        break;
-    case 'd':
-        my_x+=sin(M_PI/180*(my_angle + 90));
-        my_z+=cos(M_PI/180*(my_angle + 90));
-        break;
-    case 'a':
-        my_x-=sin(M_PI/180*(my_angle + 90));
-        my_z-=cos(M_PI/180*(my_angle + 90));
-        break;
-    case 'w':
-        my_x -= sin((M_PI/180.0)*my_angle);
-        my_z -= cos((M_PI/180.0)*my_angle);
-        break;
-    case 's':
-        my_x -= sin((M_PI/180.0)*my_angle);
-        my_z += sin((M_PI/180.0)*my_angle);
-        break;
+     case 27:                  // escape
+	 exit(0);
+	 break;
+     case 'd':
+	 setPos(90);
+	 break;
+     case 'a':
+	 setPos(270);
+	 break;
+     case 'w':
+	 setPos(180);
+	 break;
+     case 's':
+	 setPos(0);
+	 break;
     }
 
     if (my_angle > 360.0) my_angle -= 360;
     if (my_angle < 0) my_angle += 360;
 
-    if (my_x>180)
-    {
-        my_x=180;
-    }
+    if (my_x>sz) my_x = sz;
+    else if (my_x<-sz) my_x = -sz;
 
-    if (my_y>180)
-    {
-        my_y=180;
-    }
 
-    if (my_z>180)
-    {
-        my_z=180;
-    }
+    if (my_y>sz) my_y = sz;
+    else if (my_y<-sz) my_y = -sz;
+
+    if (my_z>sz) my_z = sz;
+    else if (my_z<-sz) my_z = -sz;
+
 
     glutPostRedisplay();
 }
