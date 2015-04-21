@@ -110,16 +110,17 @@ void trackMouse (int x, int y)
 //moves the camera depending on the location of the mouse
 void mouseMotion()
 {	
+    double c = .3;
     //left right
-    if (last_mouse_x<20) my_angle+=0.1;
-    if (last_mouse_x>480) my_angle-=0.1;
+    if (last_mouse_x<20) my_angle+=c;
+    if (last_mouse_x>480) my_angle-=c;
 	
     if (my_angle > 360.0) my_angle -= 360;
     if (my_angle < 0) my_angle += 360;
 	
     //up down
-    if (last_mouse_y>20) my_angle_y+=0.1;
-    if (last_mouse_y<480) my_angle_y-=0.1;
+    if (last_mouse_y>20) my_angle_y+=c;
+    if (last_mouse_y<480) my_angle_y-=c;
 
     if (my_angle_y >= 180.0) my_angle_y = 180;
     if (my_angle_y < 75) my_angle_y = 75;

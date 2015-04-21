@@ -235,15 +235,15 @@ void keyInput(unsigned char key, int x, int y)
     if (my_angle > 360.0) my_angle -= 360;
     if (my_angle < 0) my_angle += 360;
 
-    if (my_x>sz) my_x = sz;
-    else if (my_x<-sz) my_x = -sz;
+    if (my_x+5>sz) my_x = sz;
+    else if (my_x-5<-sz) my_x = -sz;
 
 
-    if (my_y>sz) my_y = sz;
-    else if (my_y<-sz) my_y = -sz;
+    if (my_y+5>sz) my_y = sz;
+    else if (my_y-5<-sz) my_y = -sz;
 
-    if (my_z>sz) my_z = sz;
-    else if (my_z<-sz) my_z = -sz;
+    if (my_z+5>sz) my_z = sz;
+    else if (my_z-5<-sz) my_z = -sz;
 
 
     glutPostRedisplay();
