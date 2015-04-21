@@ -86,7 +86,7 @@ void loadBackgroundTexture()
 // Initialization routine.
 void setup(void) 
 {
-    glClearColor(.5, .0, .5, 0.0); 
+    glClearColor(1, 1, 1, 0.0); 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_POLYGON_OFFSET_FILL);
     glPolygonOffset( 1, 1);

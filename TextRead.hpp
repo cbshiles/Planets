@@ -9,6 +9,18 @@ vector<Planet> read_planets(const char* fname)
 
     vector<Planet> system(PLANETS);
 
+    int ii = 0;
+
+    system[ii++].color = mercury;
+    system[ii++].color = venus;
+    system[ii++].color = earth;
+    system[ii++].color = mars;
+    system[ii++].color = jupiter;
+    system[ii++].color = saturn;
+    system[ii++].color = uranus;
+    system[ii++].color = neptune;
+    system[ii++].color = pluto;
+
     char strBuff [100];
 
     if (! rFile.is_open()){

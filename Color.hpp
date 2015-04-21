@@ -20,13 +20,16 @@ Color* red = new Color(255,0,0);
 Color* green = new Color(0,255,0);
 Color* grey = new Color(127,127,127);
 Color* yellow = new Color(255,255,0);
+Color* purple = new Color(255,0,255);
 
-// Color* mercury = new Color();
-// Color* venus = new Color();
-Color* earth = blue;
-Color* mars = red;
-// Color* jupiter = new Color();
-// Color* saturn = new Color();
-// Color* uranus = new Color();
-// Color* neptune = new Color();
-// Color* pluto = new Color();
+Color* mercury = grey;
+Color* venus = new Color(200,200,35);
+Color* earth = new Color(255/3,255/3,255);
+Color* mars = new Color(255, 30, 30);
+Color* jupiter = new Color(139,69,19);
+Color* saturn = new Color(190,190,200);
+Color* uranus = new Color(112,138,144);
+Color* neptune = new Color(65,105,255);
+Color* pluto = purple;
+
+Color* sunc = yellow;

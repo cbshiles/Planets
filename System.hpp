@@ -12,7 +12,7 @@ struct System{ //Solar system
 			       maxpr(0), maxar(0), maxbr(0), maxpd(0)
     {
 	sun.radius = 695800;
-	sun.color = yellow;
+	sun.color = sunc;
 
 	int i; Planet* pl = &planets[0];
 
@@ -136,6 +136,7 @@ void keyInput(unsigned char key, int x, int y)
         1,
         0);
 
+    white->set(); //cuz
 
     // Turn on OpenGL texturing.
     glEnable(GL_TEXTURE_2D);
@@ -143,6 +144,7 @@ void keyInput(unsigned char key, int x, int y)
     //create a box around the current viewpoint
     //front
     glBindTexture(GL_TEXTURE_2D, externalTextures[0]);
+
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
     glVertex3f(-sz, -sz, sz);
