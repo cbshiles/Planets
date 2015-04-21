@@ -3,13 +3,14 @@
 using namespace std;
 
 #define SFAT 50.0
-#define PFAT 200.0
+#define PFAT 2000.0
 
 #define PI 3.14159265
 
 void fatSphere(double r,int sun){
     double fct = sun ? SFAT : PFAT;
-    glScalef(1,1,1.0/fct);
+    //glScalef(1,1,1.0/fct);
+    //glScalef(1,1,1);
     glutSolidSphere(r*fct,50,50);
 }
 

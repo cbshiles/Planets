@@ -25,7 +25,7 @@
 #include <iostream>
 #include "getbmp.h"
 
-double rads = M_PI/180.0;
+
 
 //mouse coordinates
 double last_mouse_x;
@@ -43,6 +43,7 @@ static float my_angle_y=91;
 
 static unsigned int externalTextures[1];
 
+double rads = M_PI/180.0;
 double sz = 124;
 
 void loadBackgroundTexture()
@@ -167,8 +168,8 @@ void drawScene(void)
     glDisable(GL_TEXTURE_2D);
 
     glColor3f(1, 0, 1);
-    glTranslatef(0, 0, -20);
-    glutSolidSphere(5, 50, 50);
+    //glTranslatef(0, 0, -20);
+    //  glutSolidSphere(5, 50, 50);
 
     glutSwapBuffers();
 }
@@ -182,12 +183,8 @@ void setup(void)
     glPolygonOffset( 1, 1);
 
     //TEXTURES
-    //glGenTextures(1, externalTextures);
-
-    glPushMatrix();
-    glTranslatef(0, 0, -100);
+    glGenTextures(1, externalTextures);
     loadBackgroundTexture();
-    glPopMatrix();
 
     // Specify how texture values combine with current surface color values.
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);

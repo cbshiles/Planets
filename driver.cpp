@@ -43,6 +43,9 @@ static float my_z=0;
 static float my_angle=0;
 static float my_angle_y=91;
 
+double rads = M_PI/180.0;
+double sz = 124;
+
 #include "getbmp.h"
 #include "System.hpp"
 
