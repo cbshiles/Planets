@@ -232,7 +232,7 @@ void keyInput(unsigned char key, int x, int y)
     double yrat = sz/maxbr;
     double zrat = sz/sun.radius;
 
-    glTranslatef(0,0,-sz);
+    glTranslatef(0,0,-sz/2);
 
     glScalef(xrat,yrat,yrat);
 
